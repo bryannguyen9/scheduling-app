@@ -1,41 +1,36 @@
-// App.js
-import logo from './logo.svg';
+// import logo from '../src/images/logo.svg';
 import './App.css';
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import FirebaseTest from './tests/FirebaseTest.js';
-import { auth } from '../src/firebase.js'; // Import auth instead of firebase
+import React /* { useEffect } */ from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import Routes from './routes/Routes.js';
+// import FirebaseTest from './tests/FirebaseTest.js';
+import firebase from '../src/packages/firebase.js'; 
 
 function App() {
-  useEffect(() => {
-    // Log the Firebase auth object for testing
-    console.log('Firebase Auth Object:', auth);
-  }, []);
+  // useEffect(() => {
+  //   // Log the Firebase auth object for testing
+  //   console.log('Firebase Auth Object:', auth);
+  // }, []);
 
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/signup">Signup</Link>
+          </li>
+        </ul>
+      </nav>
 
-        <Routes>
-          {/* Other routes */}
-          <Route path="/firebase-test" element={<FirebaseTest />} />
-        </Routes>
-      </div>
-    </Router>
+      <hr />
+
+      <Routes />
+    </div>
+  </Router>
   );
 }
 
